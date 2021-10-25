@@ -1,15 +1,15 @@
 import React from 'react';
-import {Tabs,Tab}  from '@material-ui/core';
+import { Typography, Link } from '@material-ui/core';
 
-export default () =>
-    <Tabs
-        value={0}
-        aria-label="basic tabs example"
-        variant="fullWidth"
-        indicatorColor="primary"
-        textColor="inherit"
-    >
-        <Tab label="Item One" />
-        <Tab label="Item Two" />
-        <Tab label="Item Three" />
-    </Tabs>
+export default function Copyright(props) {
+    return (
+        <Typography variant="body2" color="text.secondary" align="center" {...props}>
+            {'Copyright © '}
+            <Link color="inherit" href="https://mui.com/">
+                Your Website
+            </Link>{' '}
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
+    );
+};

@@ -1,24 +1,24 @@
-import * as React from 'react';
-import {AppBar,Box,Toolbar,Typography,Button,IconButton}  from '@material-ui/core';
-import {Menu} from '@material-ui/icons';
+import React from 'react';
+import { styled, AppBar } from '@material-ui/core';
 
-export default () =>
-    <Box sx={{ flexGrow: 1 }}>
-    <AppBar position="static">
-    <Toolbar>
-        <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-        >
-        <Menu />
-        </IconButton>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
-        </Typography>
-        <Button color="inherit">Login</Button>
-    </Toolbar>
-    </AppBar>
-    </Box>
+const drawerWidth = 240;
+
+const Header = styled(AppBar, { shouldForwardProp: (prop) => prop !== 'open' })(
+    ({ theme, open }) => ({
+        zIndex: theme.zIndex.drawer + 1,
+        transition: theme.transitions.create(['width', 'margin'], {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+        ...(open && {
+            marginLeft: drawerWidth,
+            width: `calc(100% - ${drawerWidth}px)`,
+            transition: theme.transitions.create(['width', 'margin'], {
+                easing: theme.transitions.easing.sharp,
+                duration: theme.transitions.duration.enteringScreen,
+            }),
+        }),
+    })
+);
+
+export default Header
