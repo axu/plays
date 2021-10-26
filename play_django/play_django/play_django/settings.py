@@ -99,7 +99,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -123,3 +122,21 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Django 缓存
+# https://docs.djangoproject.com/zh-hans/3.2/topics/cache/
+CACHES = {
+    # 文件缓存
+    # 'default': {
+    #     'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+    #     'LOCATION': '/var/tmp/django_cache',  # Linux
+    # },
+    # 本地内存缓存（若多服务器请使用Memcache）
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'TIMEOUT': 60,  # 超时时间
+        'OPTIONS': {
+            'MAX_ENTRIES': 1000  # 缓存中最大存储条目数量
+        }
+    }
+}
